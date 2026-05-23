@@ -104,14 +104,30 @@
            HERO SECTION
         ----------------------------------------------------------- */
         .hero-section {
-            /* Updated Gradient to Pink */
-            background: linear-gradient(135deg, rgba(232, 67, 147, 0.9), rgba(214, 48, 110, 0.8)), 
-                        url('https://picsum.photos/seed/pinkflowers/1920/1080.jpg');
-            background-size: cover;
-            background-position: center;
-            color: white;
-            padding: 160px 0 100px 0; /* Increased top padding */
+            /* UPDATED: Pure Linear Gradient Pink Background */
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 99%, #fecfef 100%); 
+            color: var(--text-dark); /* Changed text color to dark for better contrast on light pink */
+            padding: 160px 0 100px 0;
             position: relative;
+            overflow: hidden;
+        }
+
+        /* Decorative background blob for depth */
+        .hero-section::after {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            top: -100px;
+            right: -100px;
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
         }
 
         .hero-content h1 {
@@ -135,10 +151,10 @@
 
         .hero-img-custom {
             width: 100%;
-            max-width: 500px; /* Limits width on large screens */
+            max-width: 500px;
             border-radius: 30px 0 30px 0;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-            border: 5px solid rgba(255,255,255,0.3);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            border: 5px solid rgba(255,255,255,0.6);
             animation: float 6s ease-in-out infinite;
         }
 
@@ -161,8 +177,8 @@
 
         .btn-hero-primary:hover {
             background-color: transparent;
-            border-color: white;
-            color: white;
+            border-color: var(--primary-pink);
+            color: var(--primary-pink);
         }
 
         .btn-hero-secondary {
@@ -260,6 +276,14 @@
         }
 
         /* -----------------------------------------------------------
+           NEW: NATURAL PATH SECTION (Added as requested)
+        ----------------------------------------------------------- */
+        .cta-box-custom {
+            background-color: rgba(253, 203, 110, 0.2); /* Very light gold */
+            border-color: var(--secondary-gold) !important;
+        }
+        
+        /* -----------------------------------------------------------
            SERVICES SECTION
         ----------------------------------------------------------- */
         .service-card {
@@ -267,7 +291,11 @@
             border: none;
             border-radius: var(--card-radius);
             padding: 40px 30px;
-            text-align: center;
+            /* Added Flexbox utilities for better internal alignment */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start; 
             box-shadow: var(--shadow-sm);
             transition: var(--transition);
             height: 100%;
@@ -295,6 +323,7 @@
             font-size: 1.8rem;
             margin: 0 auto 20px;
             transition: var(--transition);
+            flex-shrink: 0; /* Prevent icon from squishing */
         }
 
         .service-card:hover .service-icon {
@@ -306,10 +335,67 @@
         .service-card h5 {
             font-weight: 600;
             margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .service-card p {
+            text-align: center;
+            margin-bottom: auto; /* Pushes content below it down */
+            flex-grow: 1;
         }
 
         /* -----------------------------------------------------------
-           NEW: CTA SECTION
+           NEW: PULSE BUTTON STYLES (UPDATED FOR ROW)
+        ----------------------------------------------------------- */
+        /* Container for the buttons to keep them in a row */
+        .pulse-btn-group {
+            display: flex;
+            flex-wrap: wrap; /* Allows buttons to wrap to next line if they don't fit */
+            justify-content: center; /* Centers the buttons horizontally */
+            gap: 10px; /* Adds space between buttons */
+            margin-top: 15px;
+            width: 100%;
+        }
+
+        .pulse-btn {
+            background-color: var(--primary-pink);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 50px;
+            border: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            animation: pulse-animation 2s infinite;
+            /* Flex properties for alignment within the group */
+            flex: 1 1 auto; /* Allows buttons to grow and shrink equally */
+            min-width: 120px; /* Ensures buttons don't get too small */
+            text-align: center;
+            white-space: nowrap; /* Prevents text from breaking into multiple lines */
+        }
+
+        .pulse-btn:hover {
+            background-color: var(--primary-pink-dark);
+            color: white;
+            text-decoration: none;
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        @keyframes pulse-animation {
+            0% {
+                box-shadow: 0 0 0 0 rgba(232, 67, 147, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(232, 67, 147, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(232, 67, 147, 0);
+            }
+        }
+
+        /* -----------------------------------------------------------
+           CTA SECTION
         ----------------------------------------------------------- */
         .cta-section {
             background: linear-gradient(135deg, var(--primary-pink), var(--primary-pink-dark));
@@ -350,7 +436,7 @@
         }
 
         /* -----------------------------------------------------------
-           NEW: GALLERY (BEFORE & AFTER) SECTION
+           GALLERY (BEFORE & AFTER) SECTION
         ----------------------------------------------------------- */
         .gallery-section {
             background-color: white;
@@ -824,6 +910,73 @@
         </div>
     </section>
 
+    <!-- NEW SECTION: A Natural Path to Healing -->
+    <section id="natural-path" class="py-5 bg-white">
+        <div class="container py-5">
+            <div class="row align-items-center">
+                <!-- Left Content -->
+                <div class="col-lg-7 fade-in-section">
+                    <h2 class="mb-3">A Natural Path to Healing</h2>
+                    <p class="text-muted mb-4">
+                        Homeopathy is a gentle, holistic system of healing suitable for everyone. It focuses on you as an individual, 
+                        concentrating on treating your specific physical and emotional symptoms, to give long lasting benefits.
+                    </p>
+
+                    <h4 class="text-pink-theme mb-3">Services At Our Clinic</h4>
+                    
+                    <div class="row g-2 mb-4">
+                        <div class="col-md-6 d-flex align-items-center">
+                            <i class="fas fa-lungs text-gold-theme me-2"></i>
+                            <span class="small">Respiratory (Asthma, Allergic Rhinitis)</span>
+                        </div>
+                        <div class="col-md-6 d-flex align-items-center">
+                            <i class="fas fa-utensils text-gold-theme me-2"></i>
+                            <span class="small">Digestive (IBS, Gastritis)</span>
+                        </div>
+                        <div class="col-md-6 d-flex align-items-center">
+                            <i class="fas fa-hand-sparkles text-gold-theme me-2"></i>
+                            <span class="small">Skin (Eczema, Psoriasis, Acne)</span>
+                        </div>
+                        <div class="col-md-6 d-flex align-items-center">
+                            <i class="fas fa-bone text-gold-theme me-2"></i>
+                            <span class="small">Musculoskeletal (Arthritis)</span>
+                        </div>
+                        <div class="col-md-6 d-flex align-items-center">
+                            <i class="fas fa-brain text-gold-theme me-2"></i>
+                            <span class="small">Psychological & Emotional</span>
+                        </div>
+                        <div class="col-md-6 d-flex align-items-center">
+                            <i class="fas fa-venus text-gold-theme me-2"></i>
+                            <span class="small">Women's Health</span>
+                        </div>
+                    </div>
+
+                    <div class="cta-box-custom d-flex flex-wrap align-items-center justify-content-between p-3 rounded-3 border border-2">
+                        <div class="mb-2 mb-md-0">
+                            <span class="d-block small text-muted mb-1">Need immediate help?</span>
+                            <span class="fw-bold fs-5 text-dark">CALL FOR APPOINTMENT</span>
+                        </div>
+                        <a href="tel:+917338822967" class="btn btn-dark rounded-pill px-4">
+                            <i class="fas fa-phone-alt me-2"></i>+91 7338822967
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right Image -->
+                <div class="col-lg-5 fade-in-section">
+                    <div class="position-relative">
+                        <div class="position-absolute top-0 end-0 bg-pink-theme text-white p-3 rounded-3 shadow z-1 d-none d-md-block" style="max-width: 150px;">
+                            <i class="fas fa-leaf fa-2x mb-2"></i>
+                            <h6 class="m-0">100% Safe</h6>
+                            <small>Side Effect Free</small>
+                        </div>
+                        <img src="https://picsum.photos/seed/medicinebottles/600/700.jpg" class="img-fluid rounded-4 shadow-lg" alt="Medicine Bottles">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Services Section -->
     <section id="services" class="py-5 bg-light">
         <div class="container py-5">
@@ -833,12 +986,20 @@
             </div>
 
             <div class="row g-4">
-                <!-- Service 1 -->
+                <!-- Service 1: Multiple Pulse Buttons in a Row -->
                 <div class="col-md-6 col-lg-4 fade-in-section">
                     <div class="service-card">
                         <div class="service-icon"><i class="fas fa-allergies"></i></div>
                         <h5>Allergy Treatment</h5>
-                        <p class="text-muted small">Permanent relief from respiratory, skin, and food allergies using constitutional remedies.</p>
+                        <p class="text-muted small">Comprehensive care for respiratory, skin, and food allergies.</p>
+                        
+                        <!-- Button Group: All 4 buttons in ONE container for single row alignment -->
+                        <div class="pulse-btn-group">
+                            <button class="pulse-btn">Skin Allergy</button>
+                            <button class="pulse-btn">Food Allergy</button>
+                            <button class="pulse-btn">Respiratory</button>
+                            <button class="pulse-btn">Dust Allergy</button>
+                        </div>
                     </div>
                 </div>
                 <!-- Service 2 -->
@@ -847,6 +1008,10 @@
                         <div class="service-icon"><i class="fas fa-hand-sparkles"></i></div>
                         <h5>Skin Care</h5>
                         <p class="text-muted small">Effective treatment for acne, eczema, psoriasis, and hair fall without side effects.</p>
+                        <div class="pulse-btn-group">
+                            <button class="pulse-btn">Acne</button>
+                            <button class="pulse-btn">Eczema</button>
+                        </div>
                     </div>
                 </div>
                 <!-- Service 3 -->
@@ -855,6 +1020,10 @@
                         <div class="service-icon"><i class="fas fa-crutch"></i></div>
                         <h5>Chronic Diseases</h5>
                         <p class="text-muted small">Management of arthritis, diabetes, and hypertension through holistic protocols.</p>
+                        <div class="pulse-btn-group">
+                            <button class="pulse-btn">Arthritis</button>
+                            <button class="pulse-btn">Diabetes</button>
+                        </div>
                     </div>
                 </div>
                 <!-- Service 4 -->
@@ -863,6 +1032,10 @@
                         <div class="service-icon"><i class="fas fa-baby"></i></div>
                         <h5>Child Care</h5>
                         <p class="text-muted small">Gentle remedies for children's behavioral issues, immunity, and physical growth.</p>
+                        <div class="pulse-btn-group">
+                            <button class="pulse-btn">Immunity</button>
+                            <button class="pulse-btn">Growth</button>
+                        </div>
                     </div>
                 </div>
                 <!-- Service 5 -->
@@ -871,6 +1044,10 @@
                         <div class="service-icon"><i class="fas fa-bolt"></i></div>
                         <h5>Pain Management</h5>
                         <p class="text-muted small">Non-invasive treatment for migraines, joint pains, and sciatica.</p>
+                        <div class="pulse-btn-group">
+                            <button class="pulse-btn">Migraine</button>
+                            <button class="pulse-btn">Joint Pain</button>
+                        </div>
                     </div>
                 </div>
                 <!-- Service 6 -->
@@ -879,13 +1056,17 @@
                         <div class="service-icon"><i class="fas fa-stethoscope"></i></div>
                         <h5>General Consultation</h5>
                         <p class="text-muted small">Overall health assessment and lifestyle advice for long-term wellness.</p>
+                        <div class="pulse-btn-group">
+                            <button class="pulse-btn">Checkup</button>
+                            <button class="pulse-btn">Advice</button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- NEW: CTA Section -->
+    <!-- CTA Section -->
     <section class="cta-section fade-in-section">
         <div class="cta-bg-circle circle-1"></div>
         <div class="cta-bg-circle circle-2"></div>
@@ -898,7 +1079,7 @@
         </div>
     </section>
 
-    <!-- NEW: Gallery (Before & After) Section -->
+    <!-- Gallery (Before & After) Section -->
     <section id="gallery" class="gallery-section">
         <div class="container py-4">
             <div class="section-title fade-in-section">
