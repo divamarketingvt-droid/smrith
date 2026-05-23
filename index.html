@@ -1,0 +1,1396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CureNature Homeopathy Clinic | Natural Healing</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* -----------------------------------------------------------
+           THEME VARIABLES & GLOBAL STYLES (PINK THEME)
+        ----------------------------------------------------------- */
+        :root {
+            --primary-pink: #e84393;
+            --primary-pink-dark: #d6306e;
+            --secondary-gold: #fdcb6e;
+            --secondary-gold-dark: #f39c12;
+            --bg-light: #fff0f5; /* Lavender Blush background */
+            --text-dark: #2c3e50;
+            --text-light: #7f8c8d;
+            --card-radius: 16px;
+            --shadow-sm: 0 4px 6px rgba(0,0,0,0.05);
+            --shadow-md: 0 10px 15px rgba(0,0,0,0.1);
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+
+        /* -----------------------------------------------------------
+           UTILITIES FOR COLOR SWAPPING
+        ----------------------------------------------------------- */
+        .text-pink-theme {
+            color: var(--primary-pink) !important;
+        }
+        .text-gold-theme {
+            color: var(--secondary-gold-dark) !important;
+        }
+        .bg-pink-theme {
+            background-color: var(--primary-pink) !important;
+        }
+
+        /* -----------------------------------------------------------
+           NAVBAR
+        ----------------------------------------------------------- */
+        .navbar {
+            background-color: #ffffff;
+            box-shadow: var(--shadow-sm);
+            padding: 1rem 0;
+            transition: var(--transition);
+        }
+
+        .navbar.scrolled {
+            padding: 0.5rem 0;
+            box-shadow: var(--shadow-md);
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--primary-pink) !important;
+        }
+
+        .navbar-brand span {
+            color: var(--secondary-gold-dark);
+        }
+
+        .nav-link {
+            color: var(--text-dark);
+            font-weight: 500;
+            margin: 0 10px;
+            transition: var(--transition);
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--primary-pink) !important;
+        }
+
+        .btn-appoint-nav {
+            background-color: var(--primary-pink);
+            color: white;
+            border-radius: 50px;
+            padding: 8px 25px;
+            transition: var(--transition);
+        }
+
+        .btn-appoint-nav:hover {
+            background-color: var(--primary-pink-dark);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* -----------------------------------------------------------
+           HERO SECTION
+        ----------------------------------------------------------- */
+        .hero-section {
+            /* Updated Gradient to Pink */
+            background: linear-gradient(135deg, rgba(232, 67, 147, 0.9), rgba(214, 48, 110, 0.8)), 
+                        url('https://picsum.photos/seed/pinkflowers/1920/1080.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 160px 0 100px 0; /* Increased top padding */
+            position: relative;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        /* Hero Image Styling */
+        .hero-image-container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-img-custom {
+            width: 100%;
+            max-width: 500px; /* Limits width on large screens */
+            border-radius: 30px 0 30px 0;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            border: 5px solid rgba(255,255,255,0.3);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .btn-hero-primary {
+            background-color: var(--primary-pink);
+            border: 2px solid var(--primary-pink);
+            color: white;
+            padding: 12px 35px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .btn-hero-primary:hover {
+            background-color: transparent;
+            border-color: white;
+            color: white;
+        }
+
+        .btn-hero-secondary {
+            background-color: var(--secondary-gold);
+            color: var(--text-dark);
+            border: none;
+            padding: 12px 35px;
+            border-radius: 50px;
+            font-weight: 600;
+            margin-left: 15px;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+
+        .btn-hero-secondary:hover {
+            background-color: #ffeaa7;
+            color: var(--text-dark);
+            transform: translateY(-2px);
+        }
+
+        /* -----------------------------------------------------------
+           ANIMATION UTILITIES
+        ----------------------------------------------------------- */
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+            will-change: opacity, visibility;
+        }
+
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: none;
+        }
+
+        /* -----------------------------------------------------------
+           ABOUT SECTION
+        ----------------------------------------------------------- */
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        .section-title::after {
+            content: '';
+            width: 80px;
+            height: 4px;
+            background-color: var(--secondary-gold);
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        .about-img {
+            border-radius: var(--card-radius);
+            box-shadow: var(--shadow-md);
+            overflow: hidden;
+        }
+
+        .about-img img {
+            width: 100%;
+            height: auto;
+            transition: transform 0.5s ease;
+        }
+
+        .about-img:hover img {
+            transform: scale(1.05);
+        }
+
+        .feature-box {
+            display: flex;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .feature-icon {
+            width: 50px;
+            height: 50px;
+            background-color: rgba(232, 67, 147, 0.1); /* Light pink bg */
+            color: var(--primary-pink);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            margin-right: 15px;
+        }
+
+        /* -----------------------------------------------------------
+           SERVICES SECTION
+        ----------------------------------------------------------- */
+        .service-card {
+            background: white;
+            border: none;
+            border-radius: var(--card-radius);
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 4px solid transparent;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-md);
+            border-bottom: 4px solid var(--secondary-gold);
+        }
+
+        .service-icon {
+            width: 70px;
+            height: 70px;
+            /* Pink Gradient */
+            background: linear-gradient(135deg, var(--primary-pink), #fad0c4);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin: 0 auto 20px;
+            transition: var(--transition);
+        }
+
+        .service-card:hover .service-icon {
+            transform: rotateY(180deg);
+            /* Gold Gradient on hover */
+            background: linear-gradient(135deg, var(--secondary-gold), #ffeaa7);
+        }
+
+        .service-card h5 {
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        /* -----------------------------------------------------------
+           NEW: CTA SECTION
+        ----------------------------------------------------------- */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary-pink), var(--primary-pink-dark));
+            color: white;
+            padding: 80px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Background pattern circles */
+        .cta-bg-circle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+        }
+        .circle-1 { width: 200px; height: 200px; top: -50px; left: -50px; }
+        .circle-2 { width: 150px; height: 150px; bottom: -30px; right: 10%; }
+
+        .cta-content h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        .cta-btn-white {
+            background-color: white;
+            color: var(--primary-pink);
+            padding: 12px 40px;
+            border-radius: 50px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: var(--transition);
+            display: inline-block;
+        }
+        .cta-btn-white:hover {
+            background-color: var(--secondary-gold);
+            color: var(--text-dark);
+            transform: translateY(-3px);
+        }
+
+        /* -----------------------------------------------------------
+           NEW: GALLERY (BEFORE & AFTER) SECTION
+        ----------------------------------------------------------- */
+        .gallery-section {
+            background-color: white;
+            padding: 80px 0;
+        }
+
+        .ba-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: var(--card-radius);
+            box-shadow: var(--shadow-sm);
+            margin-bottom: 30px;
+        }
+
+        .ba-img-container {
+            position: relative;
+            height: 300px;
+            overflow: hidden;
+        }
+
+        .ba-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .ba-card:hover .ba-img {
+            transform: scale(1.05);
+        }
+
+        .ba-badge {
+            position: absolute;
+            top: 15px;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .ba-badge.before {
+            left: 15px;
+            background-color: #95a5a6;
+            color: white;
+        }
+
+        .ba-badge.after {
+            right: 15px;
+            background-color: var(--primary-pink);
+            color: white;
+        }
+
+        .ba-caption {
+            padding: 15px;
+            text-align: center;
+            background-color: #fff;
+            border-top: 1px solid #eee;
+        }
+        
+        /* Carousel Controls override */
+        .carousel-control-prev-icon, .carousel-control-next-icon {
+            background-color: var(--primary-pink);
+            background-size: 60%;
+            border-radius: 50%;
+            padding: 10px;
+        }
+
+        /* -----------------------------------------------------------
+           DOCTOR SECTION
+        ----------------------------------------------------------- */
+        .doctor-card {
+            background: white;
+            border-radius: var(--card-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+        }
+
+        .doctor-img {
+            height: 350px;
+            overflow: hidden;
+            background-color: #eee;
+        }
+
+        .doctor-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .doctor-info {
+            padding: 30px;
+            text-align: center;
+            position: relative;
+        }
+
+        .doctor-info::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary-pink);
+        }
+
+        .doctor-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .doctor-degree {
+            color: var(--primary-pink);
+            font-weight: 600;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .badge-custom {
+            background-color: rgba(253, 203, 110, 0.2); /* Light Gold */
+            color: #d68910;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin: 2px;
+            display: inline-block;
+        }
+
+        /* -----------------------------------------------------------
+           TESTIMONIALS
+        ----------------------------------------------------------- */
+        .testimonial-card {
+            background: white;
+            padding: 30px;
+            border-radius: var(--card-radius);
+            box-shadow: var(--shadow-sm);
+            margin: 15px;
+            position: relative;
+        }
+
+        .testimonial-card::before {
+            content: '\f10d';
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 2rem;
+            color: rgba(232, 67, 147, 0.1); /* Light pink quote */
+        }
+
+        .stars {
+            color: var(--secondary-gold);
+            margin-bottom: 15px;
+        }
+
+        .client-info {
+            display: flex;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .client-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 15px;
+        }
+
+        /* -----------------------------------------------------------
+           APPOINTMENT SECTION
+        ----------------------------------------------------------- */
+        .appointment-section {
+            background-color: var(--primary-pink);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Abstract background pattern */
+        .appointment-section::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 300px;
+            height: 300px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+        }
+
+        .appointment-form-container {
+            background: white;
+            padding: 40px;
+            border-radius: var(--card-radius);
+            color: var(--text-dark);
+            box-shadow: var(--shadow-md);
+        }
+
+        .form-control, .form-select {
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            margin-bottom: 20px;
+        }
+
+        .form-control:focus, .form-select:focus {
+            box-shadow: none;
+            border-color: var(--primary-pink);
+        }
+
+        .btn-submit {
+            background-color: var(--secondary-gold);
+            color: var(--text-dark);
+            font-weight: 700;
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 8px;
+            transition: var(--transition);
+        }
+
+        .btn-submit:hover {
+            background-color: #ffeaa7;
+            transform: translateY(-2px);
+        }
+
+        /* -----------------------------------------------------------
+           CONTACT SECTION & FOOTER
+        ----------------------------------------------------------- */
+        .contact-box {
+            background: white;
+            padding: 30px;
+            border-radius: var(--card-radius);
+            box-shadow: var(--shadow-sm);
+            text-align: center;
+            height: 100%;
+            transition: var(--transition);
+        }
+
+        .contact-box:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            background-color: rgba(253, 203, 110, 0.2); /* Light Gold */
+            color: #d68910;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin: 0 auto 20px;
+        }
+
+        footer {
+            background-color: #2c2c2c; /* Slightly softer black */
+            color: #d1d8e0;
+            padding: 60px 0 20px;
+        }
+
+        .footer-logo {
+            color: white;
+            font-weight: 700;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #d1d8e0;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-pink);
+            padding-left: 5px;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            color: white;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            margin-right: 10px;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+
+        .social-links a:hover {
+            background: var(--primary-pink);
+        }
+
+        /* -----------------------------------------------------------
+           MODAL
+        ----------------------------------------------------------- */
+        .modal-header {
+            background-color: var(--primary-pink);
+            color: white;
+        }
+        
+        .modal-title {
+            font-weight: 600;
+        }
+        
+        .btn-close {
+            filter: invert(1);
+        }
+
+        .modal-content {
+            border-radius: var(--card-radius);
+            border: none;
+        }
+
+        .modal-body i {
+            color: var(--secondary-gold);
+            font-size: 3rem;
+            margin-bottom: 15px;
+            display: block;
+            text-align: center;
+        }
+
+        /* -----------------------------------------------------------
+           RESPONSIVE
+        ----------------------------------------------------------- */
+        @media (max-width: 991px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            .hero-section {
+                padding: 120px 0 80px; /* Adjusted padding for mobile */
+                text-align: center;
+            }
+            .hero-buttons {
+                justify-content: center;
+            }
+            .btn-hero-secondary {
+                margin-left: 0;
+                margin-top: 15px;
+            }
+            .hero-img-custom {
+                margin-top: 30px;
+                max-width: 350px; /* Smaller image on tablet/mobile */
+            }
+            .cta-content h2 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-leaf me-2"></i>Cure<span>Nature</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link active" href="#hero">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#gallery">Results</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#doctor">Doctor</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#testimonials">Reviews</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+                <a href="#appointment" class="btn btn-appoint-nav">Book Appointment</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="hero" class="hero-section d-flex align-items-center">
+        <div class="container">
+            <div class="row align-items-center">
+                <!-- Text Content (Left) -->
+                <div class="col-lg-6 fade-in-section order-2 order-lg-1">
+                    <div class="hero-content">
+                        <h4 class="text-gold-theme mb-2"><i class="fas fa-seedling me-2"></i>100% Natural Treatment</h4>
+                        <h1>Natural Healing Through <br>Homeopathy</h1>
+                        <p>Experience holistic healing tailored to your unique body and mind. We treat the root cause, not just the symptoms.</p>
+                        <div class="hero-buttons d-flex flex-wrap">
+                            <a href="#appointment" class="btn btn-hero-primary">Book Appointment</a>
+                            <a href="#services" class="btn btn-hero-secondary">View Services</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Hero Image (Right) -->
+                <div class="col-lg-6 text-center fade-in-section order-1 order-lg-2 hero-image-container">
+                    <!-- Image Source: Using a nature/wellness related image from Picsum -->
+                    <img src="https://picsum.photos/seed/doctorpink/600/600.jpg" alt="Natural Healing" class="hero-img-custom img-fluid">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section id="about" class="py-5">
+        <div class="container py-5">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4 mb-lg-0 fade-in-section">
+                    <div class="about-img">
+                        <img src="https://picsum.photos/seed/herbs/600/400.jpg" alt="Herbal Medicine">
+                    </div>
+                </div>
+                <div class="col-lg-6 fade-in-section">
+                    <h4 class="text-pink-theme text-uppercase mb-2">About Clinic</h4>
+                    <h2 class="mb-4">Dedicated to Restoring Your Balance & Health</h2>
+                    <p class="text-muted mb-4">At CureNature, we believe in the body's innate ability to heal itself. Our approach combines traditional homeopathic wisdom with modern medical understanding to provide safe, effective, and side-effect-free treatments.</p>
+                    
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="feature-box">
+                                <div class="feature-icon"><i class="fas fa-heartbeat"></i></div>
+                                <div>
+                                    <h6 class="fw-bold mb-0">Holistic Care</h6>
+                                    <small class="text-muted">Mind, Body & Soul</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="feature-box">
+                                <div class="feature-icon"><i class="fas fa-user-md"></i></div>
+                                <div>
+                                    <h6 class="fw-bold mb-0">Expert Doctors</h6>
+                                    <small class="text-muted">15+ Years Experience</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-4 d-flex gap-3">
+                        <div class="text-center">
+                            <h3 class="fw-bold text-pink-theme">5k+</h3>
+                            <small class="text-muted">Happy Patients</small>
+                        </div>
+                        <div class="vr"></div>
+                        <div class="text-center">
+                            <h3 class="fw-bold text-pink-theme">98%</h3>
+                            <small class="text-muted">Success Rate</small>
+                        </div>
+                        <div class="vr"></div>
+                        <div class="text-center">
+                            <h3 class="fw-bold text-pink-theme">12+</h3>
+                            <small class="text-muted">Awards Won</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-5 bg-light">
+        <div class="container py-5">
+            <div class="section-title fade-in-section">
+                <h2>Our Specialized Services</h2>
+                <p class="mt-2 text-muted">Comprehensive care for a wide range of health conditions.</p>
+            </div>
+
+            <div class="row g-4">
+                <!-- Service 1 -->
+                <div class="col-md-6 col-lg-4 fade-in-section">
+                    <div class="service-card">
+                        <div class="service-icon"><i class="fas fa-allergies"></i></div>
+                        <h5>Allergy Treatment</h5>
+                        <p class="text-muted small">Permanent relief from respiratory, skin, and food allergies using constitutional remedies.</p>
+                    </div>
+                </div>
+                <!-- Service 2 -->
+                <div class="col-md-6 col-lg-4 fade-in-section">
+                    <div class="service-card">
+                        <div class="service-icon"><i class="fas fa-hand-sparkles"></i></div>
+                        <h5>Skin Care</h5>
+                        <p class="text-muted small">Effective treatment for acne, eczema, psoriasis, and hair fall without side effects.</p>
+                    </div>
+                </div>
+                <!-- Service 3 -->
+                <div class="col-md-6 col-lg-4 fade-in-section">
+                    <div class="service-card">
+                        <div class="service-icon"><i class="fas fa-crutch"></i></div>
+                        <h5>Chronic Diseases</h5>
+                        <p class="text-muted small">Management of arthritis, diabetes, and hypertension through holistic protocols.</p>
+                    </div>
+                </div>
+                <!-- Service 4 -->
+                <div class="col-md-6 col-lg-4 fade-in-section">
+                    <div class="service-card">
+                        <div class="service-icon"><i class="fas fa-baby"></i></div>
+                        <h5>Child Care</h5>
+                        <p class="text-muted small">Gentle remedies for children's behavioral issues, immunity, and physical growth.</p>
+                    </div>
+                </div>
+                <!-- Service 5 -->
+                <div class="col-md-6 col-lg-4 fade-in-section">
+                    <div class="service-card">
+                        <div class="service-icon"><i class="fas fa-bolt"></i></div>
+                        <h5>Pain Management</h5>
+                        <p class="text-muted small">Non-invasive treatment for migraines, joint pains, and sciatica.</p>
+                    </div>
+                </div>
+                <!-- Service 6 -->
+                <div class="col-md-6 col-lg-4 fade-in-section">
+                    <div class="service-card">
+                        <div class="service-icon"><i class="fas fa-stethoscope"></i></div>
+                        <h5>General Consultation</h5>
+                        <p class="text-muted small">Overall health assessment and lifestyle advice for long-term wellness.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW: CTA Section -->
+    <section class="cta-section fade-in-section">
+        <div class="cta-bg-circle circle-1"></div>
+        <div class="cta-bg-circle circle-2"></div>
+        <div class="container text-center cta-content position-relative z-1">
+            <h2>Ready to Reclaim Your Health?</h2>
+            <p class="lead mb-4 opacity-75">Don't let symptoms control your life. Book a free consultation today and discover the power of natural healing.</p>
+            <a href="#appointment" class="cta-btn-white">
+                <i class="fas fa-calendar-check me-2"></i>Book Free Consultation
+            </a>
+        </div>
+    </section>
+
+    <!-- NEW: Gallery (Before & After) Section -->
+    <section id="gallery" class="gallery-section">
+        <div class="container py-4">
+            <div class="section-title fade-in-section">
+                <h2>Real Results</h2>
+                <p class="mt-2 text-muted">See the transformations achieved through our holistic treatments.</p>
+            </div>
+
+            <div id="baCarousel" class="carousel slide fade-in-section" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <!-- Slide 1: Skin Treatment -->
+                    <div class="carousel-item active">
+                        <div class="row g-4 align-items-center">
+                            <div class="col-md-6">
+                                <div class="ba-card">
+                                    <div class="ba-img-container">
+                                        <span class="ba-badge before">BEFORE</span>
+                                        <img src="https://picsum.photos/seed/skinbad/800/600.jpg" class="ba-img" alt="Skin Before">
+                                    </div>
+                                    <div class="ba-caption">
+                                        <h6 class="fw-bold mb-0">Eczema Flare Up</h6>
+                                        <small class="text-muted">Week 1</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="ba-card">
+                                    <div class="ba-img-container">
+                                        <span class="ba-badge after">AFTER</span>
+                                        <img src="https://picsum.photos/seed/skingood/800/600.jpg" class="ba-img" alt="Skin After">
+                                    </div>
+                                    <div class="ba-caption">
+                                        <h6 class="fw-bold mb-0 text-pink-theme">Clear & Healthy Skin</h6>
+                                        <small class="text-muted">After 3 Months</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Slide 2: Hair Treatment -->
+                    <div class="carousel-item">
+                        <div class="row g-4 align-items-center">
+                            <div class="col-md-6">
+                                <div class="ba-card">
+                                    <div class="ba-img-container">
+                                        <span class="ba-badge before">BEFORE</span>
+                                        <img src="https://picsum.photos/seed/hairloss/800/600.jpg" class="ba-img" alt="Hair Before">
+                                    </div>
+                                    <div class="ba-caption">
+                                        <h6 class="fw-bold mb-0">Hair Thinning</h6>
+                                        <small class="text-muted">Initial Stage</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="ba-card">
+                                    <div class="ba-img-container">
+                                        <span class="ba-badge after">AFTER</span>
+                                        <img src="https://picsum.photos/seed/hairgrowth/800/600.jpg" class="ba-img" alt="Hair After">
+                                    </div>
+                                    <div class="ba-caption">
+                                        <h6 class="fw-bold mb-0 text-pink-theme">Regrowth & Volume</h6>
+                                        <small class="text-muted">After 6 Months</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#baCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#baCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Doctor Profile -->
+    <section id="doctor" class="py-5 bg-light">
+        <div class="container py-5">
+            <div class="row align-items-center">
+                <div class="col-lg-5 mb-4 mb-lg-0 fade-in-section">
+                    <div class="doctor-card">
+                        <div class="doctor-img">
+                            <img src="https://picsum.photos/seed/doctor1/500/600.jpg" alt="Dr. Sarah Bennett">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-7 fade-in-section">
+                    <h4 class="text-pink-theme text-uppercase mb-2">Meet Our Specialist</h4>
+                    <h2 class="mb-3">Dr. Sarah Bennett</h2>
+                    <span class="doctor-degree">BHMS, MD (Homeopathy), Lifestyle Coach</span>
+                    <p class="text-muted mb-4">Dr. Bennett is a renowned homeopath with over 15 years of clinical experience. She specializes in psychosomatic disorders and pediatric homeopathy. Her approach emphasizes understanding the patient's emotional and physical history to prescribe the perfect remedy.</p>
+                    
+                    <div class="mb-4">
+                        <span class="badge-custom">Certified Homeopath</span>
+                        <span class="badge-custom">Child Specialist</span>
+                        <span class="badge-custom">Skin Expert</span>
+                        <span class="badge-custom">15+ Years Exp.</span>
+                    </div>
+
+                    <div class="d-flex gap-3">
+                        <a href="#appointment" class="btn btn-hero-primary">Schedule Visit</a>
+                        <a href="#contact" class="btn btn-outline-dark rounded-pill px-4">Contact</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonials" class="py-5">
+        <div class="container py-5">
+            <div class="section-title fade-in-section">
+                <h2>Patient Stories</h2>
+                <p class="mt-2 text-muted">Real experiences from our healed community.</p>
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col-lg-4 col-md-6 fade-in-section">
+                    <div class="testimonial-card">
+                        <div class="stars">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p class="text-muted fst-italic">"I suffered from chronic migraines for 10 years. Dr. Bennett's treatment not only reduced the pain but eliminated the root cause within 6 months. Highly recommended!"</p>
+                        <div class="client-info">
+                            <img src="https://picsum.photos/seed/p1/100/100.jpg" class="client-avatar" alt="Client">
+                            <div>
+                                <h6 class="mb-0 fw-bold">Emily Clark</h6>
+                                <small class="text-muted">Migraine Patient</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 fade-in-section">
+                    <div class="testimonial-card">
+                        <div class="stars">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <p class="text-muted fst-italic">"The skin treatment for my son's eczema was miraculous. We tried allopathy for years with no luck, but homeopathy here healed him gently."</p>
+                        <div class="client-info">
+                            <img src="https://picsum.photos/seed/p2/100/100.jpg" class="client-avatar" alt="Client">
+                            <div>
+                                <h6 class="mb-0 fw-bold">Michael Roberts</h6>
+                                <small class="text-muted">Parent</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Appointment Booking Section -->
+    <section id="appointment" class="appointment-section py-5">
+        <div class="container py-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 fade-in-section">
+                    <div class="text-center text-white mb-4">
+                        <h2>Book an Appointment</h2>
+                        <p class="opacity-75">Start your journey towards natural healing today.</p>
+                    </div>
+                    
+                    <div class="appointment-form-container">
+                        <form id="bookingForm">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label class="form-label small text-muted">Full Name *</label>
+                                    <input type="text" class="form-control" id="name" placeholder="John Doe" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label small text-muted">Phone Number *</label>
+                                    <input type="tel" class="form-control" id="phone" placeholder="+1 234 567 890" required>
+                                    <div id="phoneError" class="text-danger small" style="display:none;">Please enter a valid phone number (10 digits).</div>
+                                </div>
+                            </div>
+
+                            <div class="mt-3">
+                                <label class="form-label small text-muted">Email Address *</label>
+                                <input type="email" class="form-control" id="email" placeholder="john@example.com" required>
+                            </div>
+
+                            <div class="row mt-3">
+                                <div class="col-md-6">
+                                    <label class="form-label small text-muted">Preferred Date *</label>
+                                    <input type="date" class="form-control" id="date" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label small text-muted">Time Slot *</label>
+                                    <select class="form-select" id="time" required>
+                                        <option value="">Select Time</option>
+                                        <option value="09:00 AM - 10:00 AM">09:00 AM - 10:00 AM</option>
+                                        <option value="10:00 AM - 11:00 AM">10:00 AM - 11:00 AM</option>
+                                        <option value="11:00 AM - 12:00 PM">11:00 AM - 12:00 PM</option>
+                                        <option value="02:00 PM - 03:00 PM">02:00 PM - 03:00 PM</option>
+                                        <option value="03:00 PM - 04:00 PM">03:00 PM - 04:00 PM</option>
+                                        <option value="04:00 PM - 05:00 PM">04:00 PM - 05:00 PM</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="mt-3">
+                                <label class="form-label small text-muted">Consultation Type *</label>
+                                <select class="form-select" id="type" required>
+                                    <option value="Clinic Visit">Clinic Visit (Offline)</option>
+                                    <option value="Online Video">Online Video Consultation</option>
+                                </select>
+                            </div>
+
+                            <div class="mt-3">
+                                <label class="form-label small text-muted">Symptoms / Message</label>
+                                <textarea class="form-control" id="message" rows="3" placeholder="Briefly describe your problem..."></textarea>
+                            </div>
+
+                            <button type="submit" class="btn btn-submit mt-2">Confirm Booking</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-5">
+        <div class="container py-5">
+            <div class="section-title fade-in-section">
+                <h2>Get In Touch</h2>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4 fade-in-section">
+                    <div class="contact-box">
+                        <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                        <h5>Our Location</h5>
+                        <p class="text-muted small">123 Pink Blossom Ave, Wellness City,<br>New York, NY 10012</p>
+                    </div>
+                </div>
+                <div class="col-md-4 fade-in-section">
+                    <div class="contact-box">
+                        <div class="contact-icon"><i class="fas fa-phone-alt"></i></div>
+                        <h5>Phone & Email</h5>
+                        <p class="text-muted small">+1 (555) 123-4567<br>info@curenature.com</p>
+                    </div>
+                </div>
+                <div class="col-md-4 fade-in-section">
+                    <div class="contact-box">
+                        <div class="contact-icon"><i class="fab fa-whatsapp"></i></div>
+                        <h5>WhatsApp</h5>
+                        <p class="text-muted small">Chat with us for quick queries<br><a href="#" class="text-pink-theme text-decoration-none fw-bold">Start Chat</a></p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Google Maps Embed Placeholder -->
+            <div class="row mt-5 fade-in-section">
+                <div class="col-12">
+                    <div class="rounded-3 overflow-hidden shadow-sm" style="height: 350px; background: #eee;">
+                         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.1422937950147!2d-73.98731968482413!3d40.75889497932681!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25855c6480299%3A0x55194ec5a1ae072e!2sTimes%20Square!5e0!3m2!1sen!2sus!4v1620000000000!5m2!1sen!2sus" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row gy-4">
+                <div class="col-lg-4">
+                    <a href="#" class="footer-logo"><i class="fas fa-leaf me-2 text-pink-theme"></i>CureNature</a>
+                    <p class="small">Providing safe, natural, and effective homeopathic treatments for over a decade. Your health is our priority.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-6">
+                    <h6 class="text-white mb-3">Quick Links</h6>
+                    <ul class="list-unstyled footer-links small">
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#doctor">Doctor</a></li>
+                        <li><a href="#gallery">Results</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-6">
+                    <h6 class="text-white mb-3">Support</h6>
+                    <ul class="list-unstyled footer-links small">
+                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4">
+                    <h6 class="text-white mb-3">Newsletter</h6>
+                    <p class="small">Subscribe to get health tips and updates.</p>
+                    <div class="input-group mb-3">
+                        <input type="email" class="form-control" placeholder="Email address" aria-label="Email">
+                        <button class="btn bg-pink-theme text-white" type="button">Subscribe</button>
+                    </div>
+                </div>
+            </div>
+            <hr class="border-secondary my-4">
+            <div class="text-center small">
+                &copy; 2023 CureNature Homeopathy Clinic. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Success Modal -->
+    <div class="modal fade" id="successModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Booking Confirmed!</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <i class="fas fa-check-circle"></i>
+                    <h5>Thank You, <span id="modalName"></span>!</h5>
+                    <p class="text-muted">Your appointment has been successfully booked for <span id="modalDate" class="fw-bold"></span> at <span id="modalTime" class="fw-bold"></span>.</p>
+                    <p class="small text-muted">We have sent a confirmation to your email.</p>
+                </div>
+                <div class="modal-footer justify-content-center border-0">
+                    <button type="button" class="btn bg-pink-theme text-white" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // ---------------------------------------------------------
+            // 1. Sticky Navbar & Scroll Spy
+            // ---------------------------------------------------------
+            const navbar = document.querySelector('.navbar');
+            const sections = document.querySelectorAll('section, header');
+            const navLinks = document.querySelectorAll('.nav-link');
+
+            window.addEventListener('scroll', () => {
+                // Sticky Effect
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+
+                // Scroll Spy
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    if (scrollY >= (sectionTop - 150)) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href').includes(current)) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+
+            // ---------------------------------------------------------
+            // 2. Scroll Animations (Intersection Observer)
+            // ---------------------------------------------------------
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: "0px 0px -50px 0px"
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target); // Only animate once
+                    }
+                });
+            }, observerOptions);
+
+            const fadeElements = document.querySelectorAll('.fade-in-section');
+            fadeElements.forEach(el => observer.observe(el));
+
+            // ---------------------------------------------------------
+            // 3. Form Validation & LocalStorage
+            // ---------------------------------------------------------
+            const bookingForm = document.getElementById('bookingForm');
+            const successModal = new bootstrap.Modal(document.getElementById('successModal'));
+
+            // Set min date to today
+            const dateInput = document.getElementById('date');
+            const today = new Date().toISOString().split('T')[0];
+            dateInput.setAttribute('min', today);
+
+            bookingForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                // Get Values
+                const name = document.getElementById('name').value.trim();
+                const phone = document.getElementById('phone').value.trim();
+                const email = document.getElementById('email').value.trim();
+                const date = document.getElementById('date').value;
+                const time = document.getElementById('time').value;
+                const type = document.getElementById('type').value;
+                const message = document.getElementById('message').value.trim();
+
+                // Validation: Phone (Simple 10 digit regex)
+                const phoneRegex = /^\d{10}$/;
+                const phoneError = document.getElementById('phoneError');
+                
+                if (!phoneRegex.test(phone.replace(/[^0-9]/g, ''))) {
+                    phoneError.style.display = 'block';
+                    return;
+                } else {
+                    phoneError.style.display = 'none';
+                }
+
+                // Create Booking Object
+                const bookingData = {
+                    id: Date.now(),
+                    name,
+                    phone,
+                    email,
+                    date,
+                    time,
+                    type,
+                    message,
+                    timestamp: new Date().toISOString()
+                };
+
+                // Save to LocalStorage
+                saveBooking(bookingData);
+
+                // Show Success Modal
+                document.getElementById('modalName').textContent = name;
+                document.getElementById('modalDate').textContent = date;
+                document.getElementById('modalTime').textContent = time;
+                successModal.show();
+
+                // Reset Form
+                bookingForm.reset();
+            });
+
+            function saveBooking(data) {
+                let bookings = JSON.parse(localStorage.getItem('clinicBookings')) || [];
+                bookings.push(data);
+                localStorage.setItem('clinicBookings', JSON.stringify(bookings));
+                console.log('Booking Saved:', data);
+            }
+
+            // ---------------------------------------------------------
+            // 4. Smooth Scrolling for Anchor Links
+            // ---------------------------------------------------------
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        // Close mobile menu if open
+                        const navbarCollapse = document.querySelector('.navbar-collapse');
+                        if (navbarCollapse.classList.contains('show')) {
+                            const bsCollapse = new bootstrap.Collapse(navbarCollapse);
+                            bsCollapse.hide();
+                        }
+
+                        const headerOffset = 70;
+                        const elementPosition = targetElement.getBoundingClientRect().top;
+                        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: "smooth"
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
